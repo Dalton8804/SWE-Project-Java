@@ -3,6 +3,7 @@ class Vehicle {
     int year,mileage,mpg;
     double monthlyPayments;
     String[] addedFeatures;
+
     Vehicle(String VIN, String type, String make, String model,
             String country, int year, int mileage, String[] addedFeatures,
             String size, String color, String engine, int mpg, String fuelType,
@@ -23,4 +24,10 @@ class Vehicle {
         this.currentLocation = currentLocation;
         this.monthlyPayments = monthlyPayments;
     }
+
+    public String toString(){
+        String str = "";
+        return str;
+    }
+
 }
