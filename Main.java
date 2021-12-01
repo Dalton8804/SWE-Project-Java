@@ -1,8 +1,18 @@
-public class Main{
-    public static void main(String args[]){
-        Vehicle car = new Vehicle("12345678", "sedan", "toyota", "corolla",
-                "American", 2021, 5000, new String[]{null}, "compact", "black",
-                "I4", 34, "gasoline", "Beaumont", 340);
-        System.out.println(car.model);
+import java.util.Scanner;
+
+public class Main {
+    String[] Usernames = User.getUsers();
+    public static void main(String args[]) {
+
+
+    }
+    public static void onStartUp(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter your username: ");
+        String Username = input.nextLine();
+        if (Usernames.contains(Username)){
+
+        }
+        System.out.println("Username");
     }
 }
