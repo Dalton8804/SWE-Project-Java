@@ -1,22 +1,24 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    String[] Usernames = User.getUsers();
+    static UserList Users = new UserList();
     public static void main(String args[]) {
-
+        onStartUp();
 
     }
     public static void onStartUp(){
         Scanner input = new Scanner(System.in);
         System.out.print("Enter your username: ");
-        String Username = input.nextLine();;
-        if (Usernames.contains(Username)){
+        String Username = input.nextLine();
+        if (Users.checkName(Username)){
             System.out.println("Hello "+Username+"! Please enter your password :) You have 5 tries!");
             String Password;
             int triesLeft = 5;
+            User currUser = Users.getUser(Username);
             while(true){
                 Password = input.nextLine();
-                if (Password==Username.getPass()) {
+                if (Password==currUser.getPassword()) {
                     System.out.println("Welcome Back!");
                     break;
                 } else {
@@ -25,10 +27,15 @@ public class Main {
                 }
             }
         } else {
-            User.addUser(Username);
+            System.out.println("Please enter your email :)");
+            String email = input.nextLine();
             System.out.println("Please create a password :)");
-            User.setPassword(input.nextLine());
+            String Password = input.nextLine();
+            Users.addUser(new User(Username, email, Password, getNewID()));
         }
-        System.out.println("Username");
+        System.out.println(Users.getUserList());
+    }
+    public static int getNewID(){
+        return 10; // change to random 8 digit int later
     }
 }
