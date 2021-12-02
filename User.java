@@ -21,4 +21,7 @@ public class User {
     public String getEmail() {
         return this.email;
     }
+    public int getID(){
+        return this.id;
+    }
 }

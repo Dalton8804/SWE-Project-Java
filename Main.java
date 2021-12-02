@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -34,6 +33,7 @@ public class Main {
             Users.addUser(new User(Username, email, Password, getNewID()));
         }
         System.out.println(Users.getUserList());
+        input.close();
     }
     public static int getNewID(){
         return 10; // change to random 8 digit int later

@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00f46407-72d5-4f63-b38d-daf76105cc3d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SWE-Project-Java.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/swe-project-java/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/swe-project-java/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/swe-project-java/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/swe-project-java/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/swe-project-java/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/swe-project-java/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/swe-project-java/Vehicle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/swe-project-java/Vehicle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
