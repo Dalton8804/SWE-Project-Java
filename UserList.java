@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class UserList{
+class UserList implements Serializable{
     ArrayList<User> ListOfUsers = new ArrayList<User>();
     UserList(User user){
         this.ListOfUsers.add(user);

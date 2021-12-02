@@ -1,4 +1,4 @@
-public class User {
+public class User{
     private String username;
     private String email;
     private String password;
@@ -25,4 +25,5 @@ public class User {
     public int getID(){
         return this.id;
     }
+    
 }
