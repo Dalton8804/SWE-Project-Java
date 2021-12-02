@@ -22,8 +22,12 @@ class UserList{
         }
         return false;
     }
-    public User getUser(String username) {
+    public User getUserByName(String username) {
+        for (User u: ListOfUsers){
+            if (u.getUsername().equals(username)){
+                return u;
+            }
+        }
         return null;
     }
-
 }

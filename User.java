@@ -3,6 +3,7 @@ public class User {
     private String email;
     private String password;
     private int id;
+    // arraylist of cars listed for sale
     User(String username, String email, String password,  int id){
         this.username = username;
         this.email = email;
