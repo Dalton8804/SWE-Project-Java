@@ -1,4 +1,6 @@
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
     private String username;
     private String email;
     private String password;
@@ -10,6 +12,11 @@ public class User {
         this.password = password;
         this.id = id;
     }
+    // Simple constructor for testing. Delete this when no longer needed
+    User(String username){
+        this.username = username;
+    }
+    User(){};
     public void setPassword(String password){
         this.password = password;
     }

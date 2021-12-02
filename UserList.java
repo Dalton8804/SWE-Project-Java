@@ -11,6 +11,11 @@ class UserList implements Serializable{
     public void addUser(User user){
         this.ListOfUsers.add(user);
     }
+
+    public User getUser(int index){
+        return ListOfUsers.get(index);
+    }
+
     public ArrayList<User> getUserList() {
         return this.ListOfUsers;
     }
@@ -31,4 +36,12 @@ class UserList implements Serializable{
         }
         return null;
     }
+    // This doesn't work. Not sure why yet
+     //public String toString(){
+         //String list = ListOfUsers.get(0).getUsername() + ", ";
+         //for(int i = 1; i < this.ListOfUsers.size(); i++){
+            //list.concat(ListOfUsers.get(i).getUsername() + ", ");
+         //}
+         //return list;
+     //}
 }
