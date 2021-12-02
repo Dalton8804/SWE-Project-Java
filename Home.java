@@ -1,5 +1,4 @@
 import java.util.HashMap;
-
 public class Home extends Page {
     Home(HashMap<String, String> appState){
         super(appState);
@@ -7,6 +6,6 @@ public class Home extends Page {
     }
     @Override
     public String render() {
-
+     return "nextpage";
     }
 }
