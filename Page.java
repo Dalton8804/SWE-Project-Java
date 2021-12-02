@@ -1,2 +1,3 @@
-public class Page {
+public interface Page {
+    public String render();
 }
