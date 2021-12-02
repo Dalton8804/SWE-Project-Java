@@ -1,15 +1,13 @@
 
-singleton activeRoute {
-    Route
-    getRoute
-    setRoute
-}
 
+
+// THIS IS JUST GOING TO BE A HASH MAP THAT WE PASS A REFERENCE TO AROUND IN THE APP
+// MAKING AN ENTIRE SINGLETON CLASS IS OVER COMPLICATING THINGS
 singleton appState {
     map [string, string];
     [
-        { "username": "null" },
-        { "email"
+        { "username" : "null" },
+        { "email" : "null" }
     ]
 }
 
@@ -23,6 +21,7 @@ interface Page {
     String Route "someRoute"
     render(){
         // all the stuff
+        // RETURNS THE NEXT ROUTE
     }
     getRoute()
     switchRoute()

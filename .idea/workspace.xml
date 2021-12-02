@@ -5,19 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00f46407-72d5-4f63-b38d-daf76105cc3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_4_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ListOfCars.java" beforeDir="false" afterPath="$PROJECT_DIR$/ListOfCars.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActiveRoute.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Route.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SWE-Project-Java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SWE-Project-Java.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/psuedo" beforeDir="false" afterPath="$PROJECT_DIR$/psuedo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
