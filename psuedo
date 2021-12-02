@@ -1,0 +1,48 @@
+
+singleton activeRoute {
+    Route
+    getRoute
+    setRoute
+}
+
+singleton appState {
+    map [string, string];
+    [
+        { "username": "null" },
+        { "email"
+    ]
+}
+
+
+Route {
+    string route
+
+}
+
+interface Page {
+    String Route "someRoute"
+    render(){
+        // all the stuff
+    }
+    getRoute()
+    switchRoute()
+
+}
+
+
+
+class Router {
+
+    map[String, Page] allRoutes;
+    activeRoute currentRoute;
+
+    Page findCurrentPage()
+
+    startRouter(){
+        while(running){
+            Page currentPage = loadPage(currentRoute.getRoute());
+            currentPage.render();
+        }
+    }
+
+}
