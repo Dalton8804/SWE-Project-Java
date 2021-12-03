@@ -1,41 +1,18 @@
-import java.util.Scanner;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Main {
-    public static void main(String args[]) {
+import javax.imageio.plugins.tiff.ExifGPSTagSet;
 
-        UserList userlist = new UserList();
+public class Main {    
+   public static void main(String args[]) {
+      
+    }
 
-        // example serialization
-        try {
-            FileOutputStream fileOut =
-            new FileOutputStream("userList.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(userlist);
-            out.close();
-            fileOut.close();
-         } catch (IOException i) {
-            i.printStackTrace();
-         }
-
-         // example deserialization
-         UserList userlist2 = null;
-         try {
-            FileInputStream fileIn = new FileInputStream("userList.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            userlist2 = (UserList) in.readObject();
-            in.close();
-            fileIn.close();
-         } catch (IOException i) {
-            i.printStackTrace();
-            return;
-         } catch (ClassNotFoundException c) {
-            c.printStackTrace();
-            return;
-         }
+    public static void exitApp(){
+       ListOfCars.serialize();
+       ListOfUsers.serialize();
     }
 }
