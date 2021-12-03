@@ -8,8 +8,6 @@ public class ListOfCars implements Serializable{
         this.carList.add(car);
     }
 
-    ListOfCars(){}
-
     public void addCar(Vehicle car){
         this.carList.add(car);
     }
@@ -22,11 +20,11 @@ public class ListOfCars implements Serializable{
         return this.carList;
     }
     // This doesn't work. Not sure why yet
-    //public String toString(){
-        //String list = ListOfCars.get(0).getVIN() + ", ";
-        //for(int i = 1; i < this.ListOfCars.size(); i++){
-           //list.concat(ListOfCars.get(i).getVIN() + ", ");
-        //}
-        //return list;
-    //}
+    public String toString(){
+        String list = ListOfCars.get(0).getVIN() + ", ";
+        for(int i = 1; i < this.ListOfCars.size(); i++){
+           list.concat(ListOfCars.get(i).getVIN() + ", ");
+        }
+        return list;
+    }
 }
