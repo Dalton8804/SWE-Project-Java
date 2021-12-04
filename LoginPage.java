@@ -2,9 +2,11 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class LoginPage extends Page{
+
     HashMap<String,String> appState;
     ListOfUsers userList;
     ListOfCars carList;
+    
     LoginPage(HashMap<String,String> appState, ListOfCars carList, ListOfUsers userList){
         super(appState);
         this.appState = appState;
@@ -23,7 +25,7 @@ public class LoginPage extends Page{
         if(userList.checkName(username)){
             System.out.println("Welcome back "+username+"!");
             System.out.println("Please enter your password");
-            while(true);
+            while(true){
                 String password = in.nextLine();
                 if (userList.getUserByName(username).getPassword().equals(password)){
                     System.out.println("Choose an option (enter the number of your selection):");
@@ -31,9 +33,15 @@ public class LoginPage extends Page{
                     int choice = in.nextInt();
                     in.next();
                     switch(choice){
-                        case 1: /* render Home? */ break;
-                        case 2: /* render Account? */ break;
-                        case 3: /* Logout */ break;
+                        case 1: 
+                            /* render Home */
+                            return "home";
+                        case 2: 
+                            /* render Account? */ 
+                            return "account";
+                        case 3: 
+                            /* Logout */ 
+                            return "logout";
                         case 4: Main.exitApp(); break;
                     }
                     break;
@@ -41,13 +49,10 @@ public class LoginPage extends Page{
                 else {
                     int numberOfTries = 5;
                     while (numberOfTries>0){
-                        System.out.println("Your password is incorrect, try again");
-                        /// ENTER ACTUAL FUNCTINOAL SHIT HERE
-
-
-
+                        System.out.println("Your password is incorrect, you have " +numberOfTries +" left.");
                     }
                 }
+            }
         }
         // Account Doesnt Exist, Account creation
         else {

@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.Scanner;
+
 public class Home extends Page {
 
     enum Action {
@@ -6,13 +8,18 @@ public class Home extends Page {
         GOTOUSER,
         GOTOCAR,
     }
-    private carListCursor;
+    HashMap<String, String> appState;
+    private int carListCursor = 0;
+    private ListOfUsers userList;
+    private ListOfCars carList;
 
-    Home(HashMap<String, String> appState){
-        this.carListCursor = 0;
+    Home(HashMap<String, String> appState, ListOfCars carList, ListOfUsers userList) {
         super(appState);
+        this.carListCursor = 0;
+        this.appState = appState;
+        this.carList = carList;
+        this.userList = userList;
     }
-    public String
 
 
     @Override
