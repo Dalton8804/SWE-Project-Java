@@ -18,7 +18,7 @@ public class Router {
         this.dev = true;
     }
 
-    public void addPage(String label, page){
+    public void addPage(String label, Page page){
         allRoutes.put(label, page);
     }
 

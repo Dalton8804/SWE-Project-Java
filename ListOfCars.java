@@ -12,7 +12,7 @@ public class ListOfCars implements Serializable{
     ListOfCars(){
         carList = new ArrayList<Vehicle>();
         try {
-            FileInputStream fileIn = new FileInputStream("carListSerialization.txt");
+            FileInputStream fileIn = new FileInputStream("../data/carListSerialization.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             carList = (ArrayList<Vehicle>) in.readObject();
             in.close();
@@ -36,13 +36,17 @@ public class ListOfCars implements Serializable{
         return carList.get(index);
     }
 
+    public int size(){
+        return carList.size();
+    }
+
     public ArrayList<Vehicle> getListOfCars(){
         return this.carList;
     }
 
     public void serialize(){
         try{
-            FileOutputStream fos = new FileOutputStream("carListSerialization.txt");
+            FileOutputStream fos = new FileOutputStream("../data/carListSerialization.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this.carList);
           }

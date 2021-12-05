@@ -14,19 +14,17 @@ public class Home extends Page {
     }
 
     private int carListCursor;
-
-    private int carListCursor = 0;
     private ListOfUsers userList;
     private ListOfCars carList;
 
     Home(HashMap<String, String> appState, ListOfCars carList, ListOfUsers userList) {
+        super(appState);
         this.carListCursor = 0;
         this.carList = carList;
         this.userList = userList;
-        super(appState);
     }
 
-    public String getCarSelection(Scanner input){
+    public void getCarSelection(Scanner input){
         System.out.println("Please enter a vin:");
         String vin = input.nextLine();
         appState.put("selectedCar", vin);
@@ -42,7 +40,7 @@ public class Home extends Page {
                     return Action.GOTOUSER;
                 case 2:
                     return Action.EXIT;
-                case default:
+                default:
                     return Action.DEFAULT;
             }
         }else{
@@ -57,7 +55,7 @@ public class Home extends Page {
                     return Action.GOTOCAR;
                 case 4:
                     return Action.EXIT;
-                case default:
+                default:
                     return Action.DEFAULT;
             }
         }
@@ -66,8 +64,8 @@ public class Home extends Page {
     private void listCars(){
         System.out.println("Results for page " + (carListCursor + 1));
         for(int i = carListCursor * 4; i < carListCursor + 4 && i < carList.size(); i++){
-            c = carList.get(i);
-            System.out.println(i + ". Vin: " + c.getVin() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
+            Vehicle c = carList.getCar(i);
+            System.out.println(i + ". Vin: " + c.getVIN() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
         }
 
     }
@@ -86,7 +84,7 @@ public class Home extends Page {
             carListCursor -= 1;
             listCars();
         } else {
-            System.out.println("You are on the first page already")
+            System.out.println("You are on the first page already");
         }
    }
 
@@ -97,22 +95,22 @@ public class Home extends Page {
         Scanner input = new Scanner(System.in);
         while(true){
             int actionCode = input.nextInt();
-            int action = getAction(actionCode);
+            Action action = getAction(actionCode);
             switch(action){
-                case Action.GOTOUSER:
+                case GOTOUSER:
                     return "user";
-                case Action.GOTONEXTPAGE:
+                case GOTONEXTPAGE:
                     nextPage();
                     break;
-                case Action.GOTOPREVPAGE:
+                case GOTOPREVPAGE:
                     prevPage();
                     break;
-                case Action.GOTOCAR:
-                    getCarSelection();
+                case GOTOCAR:
+                    getCarSelection(input);
                     return "cardetail";
-                case Action.EXIT:
+                case EXIT:
                     return "exit";
-                case Action.DEFAULT:
+                case DEFAULT:
                     break;
             }
             if(carListCursor == 0){
@@ -121,6 +119,5 @@ public class Home extends Page {
                 System.out.println("0 go to next page, 1 go to previous page, 2  go to my page, 3  go to a car by vin, 4 exit");
             }
         }
-        return "home";
     }
 }

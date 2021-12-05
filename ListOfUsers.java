@@ -11,7 +11,7 @@ class ListOfUsers implements Serializable{
    
     ListOfUsers(){
         try {
-            FileInputStream fileIn = new FileInputStream("userListSerialization.txt");
+            FileInputStream fileIn = new FileInputStream("../data/userListSerialization.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             userList = (ArrayList<User>) in.readObject();
             in.close();
@@ -58,7 +58,7 @@ class ListOfUsers implements Serializable{
 
     public static void serialize(){
         try{
-            FileOutputStream fos = new FileOutputStream("userListSerialization.txt");
+            FileOutputStream fos = new FileOutputStream("../data/userListSerialization.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(userList);
           }
