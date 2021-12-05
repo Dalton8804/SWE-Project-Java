@@ -123,11 +123,11 @@ public class Sort
                 year = (int)Math.floor(Math.random()*(2021-2010)+2010);//not accurate that would take a lot of work
 
                 String countryManufacture[] = {"China", "United States", "Japan", "Germany", "India", "Mexico"};
-                if(make.equals("Tesla"))
+                if(make.equals("Tesla")){
                     country = "United States";
-                else
+                }else{
                     country = countryManufacture[(int)Math.floor(Math.random()*(countryManufacture.length)+0)];
-
+                }
                 String optFeatures[] = {"bluetooth", "navigation system", "car lighter", "leather seats", "heated seats", "cooled seats", "keyless starter"};
                 String[] addedFeatures = new String[(int)Math.floor(Math.random()*(optFeatures.length)+0)];
                 HashSet<String> temp = new HashSet<>();
@@ -138,8 +138,7 @@ public class Sort
                     othertemp = optFeatures[(int) Math.floor(Math.random() * (optFeatures.length) + 0)];
                     if(temp.contains(othertemp))
                         continue;
-                    else
-                    {
+                    else {
                         temp.add(othertemp);
                         addedFeatures[w] = othertemp;
                         w++;

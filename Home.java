@@ -10,6 +10,7 @@ public class Home extends Page {
         GOTOPREVPAGE,
         GOTOCAR,
         EXIT,
+        HOME,
         DEFAULT
     }
 
@@ -24,15 +25,15 @@ public class Home extends Page {
         this.userList = userList;
     }
 
-    public void getCarSelection(Scanner input){
+    public void getCarSelection(Input input){
         System.out.println("Please enter a vin:");
-        String vin = input.nextLine();
+        String vin = input.getLine();
         appState.put("selectedCar", vin);
         return;
     }
 
     public Action getAction(int actionCode){
-        if(carListCursor > 0){
+        if(carListCursor == 0){
             switch(actionCode){
                 case 0:
                     return Action.GOTONEXTPAGE;
@@ -62,7 +63,7 @@ public class Home extends Page {
     }
 
     private void listCars(){
-        System.out.println("Results for page " + (carListCursor + 1));
+        System.out.println("Results for page " + (carListCursor));
         for(int i = carListCursor * 4; i < carListCursor + 4 && i < carList.size(); i++){
             Vehicle c = carList.getCar(i);
             System.out.println(i + ". Vin: " + c.getVIN() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
@@ -92,10 +93,9 @@ public class Home extends Page {
     public String render() {
         System.out.println("Welcome to car app Home!");
         System.out.println("0 List cars for sale, 1 go to my page, 2 exit");
-        Scanner input = new Scanner(System.in);
-        while(true){
-            
-            int actionCode = input.nextInt();
+        Input input = Input.getInstance();
+        while(true){  
+            int actionCode = input.getInt();
             Action action = getAction(actionCode);
             switch(action){
                 case GOTOUSER:
@@ -111,6 +111,8 @@ public class Home extends Page {
                     return "cardetail";
                 case EXIT:
                     return "exit";
+                case HOME: 
+                    break;
                 case DEFAULT:
                     break;
             }
