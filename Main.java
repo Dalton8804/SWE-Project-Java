@@ -11,9 +11,14 @@ import javax.imageio.plugins.tiff.ExifGPSTagSet;
 
 public class Main {
    public static void main(String args[]) {
-         /*LoginPage login = new LoginPage(new HashMap<String,String>(), new ListOfCars(), new ListOfUsers());
+         HashMap<String,String> appState = new HashMap<String,String>();
+         ListOfCars carList = new ListOfCars();
+         ListOfUsers userList = new ListOfUsers();
+         LoginPage login = new LoginPage(appState, carList, userList);
+         login.render();
          exitApp();
-         login.render(); // Class cast exception ListOfUser.java line 43, in checkName();*/
+         System.out.println(appState.get("username"));
+
          
          /* FUNCTIONING COMPARATOR SHIT YUHHHHHHH
          ListOfCars carList = new ListOfCars();
@@ -24,8 +29,7 @@ public class Main {
          */
 
          // PRINTS THE NUMBERS OF VEHICLES
-         ListOfCars carList = new ListOfCars();
-         System.out.println(carList.getListOfCars().size());
+         //System.out.println(carList.getListOfCars().size());
          
          /* GENERATES 1000 CARS AND SERIALIZES THEM
          carList = Sort.makeCars(1000,carList);
@@ -36,7 +40,7 @@ public class Main {
       }
 
     public static void exitApp(){
-       //ListOfCars.serialize();
+       ListOfCars.serialize();
        ListOfUsers.serialize();
     }
 }

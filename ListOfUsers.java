@@ -28,7 +28,13 @@ class ListOfUsers implements Serializable{
     }
 
     public void addUser(User user){
-        this.userList.add(user);
+        try{
+            this.userList.add(user);
+        }
+        catch(NullPointerException n){
+            this.userList = new ArrayList<User>();
+            this.userList.add(user);
+        }
     }
 
     public User getUser(int index){
@@ -40,6 +46,8 @@ class ListOfUsers implements Serializable{
     }
 
     public Boolean checkName(String name){
+        if (userList==null)
+            return false;
         for (User u: userList){
             if (u.getUsername().equals(name)){
                 return true;
