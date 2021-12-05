@@ -180,9 +180,9 @@ public class Sort
                 size = sizes[(int)Math.floor(Math.random()*(sizes.length)+0)];//the rest
 
             Vehicle newCar = new Vehicle(VIN, type, make, model,
-            country, year, mileage, addedFeatures,
-        size, color, transmission, engineCylinders, mpg, fuelType,
-        currentLocation, monthlyPayments, price);
+                    country, year, mileage, addedFeatures,
+                    size, color, transmission, engineCylinders,
+                    mpg, fuelType, currentLocation, monthlyPayments, price);
 
             carList.add(newCar);
             }
