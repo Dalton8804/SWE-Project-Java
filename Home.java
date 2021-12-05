@@ -29,14 +29,15 @@ public class Home extends Page {
     public String getCarSelection(Scanner input){
         System.out.println("Please enter a vin:");
         String vin = input.nextLine();
-        return vin;
+        appState.put("selectedCar", vin);
+        return;
     }
 
     public Action getAction(int actionCode){
         if(carListCursor > 0){
             switch(actionCode){
                 case 0:
-                    return Action.LIST;
+                    return Action.GOTONEXTPAGE;
                 case 1:
                     return Action.GOTOUSER;
                 case 2:
@@ -62,27 +63,55 @@ public class Home extends Page {
         }
     }
 
+    private void listCars(){
+        System.out.println("Results for page " + (carListCursor + 1));
+        for(int i = carListCursor * 4; i < carListCursor + 4 && i < carList.size(); i++){
+            c = carList.get(i);
+            System.out.println(i + ". Vin: " + c.getVin() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
+        }
+
+    }
+
+    private void nextPage(){
+        if(carListCursor < carList.size() - 1){
+            carListCursor += 1;
+            listCars();
+        } else {
+            System.out.println("No more pages...");
+        }
+    }
+
+   private void prevPage(){
+        if(carListCursor > 0){
+            carListCursor -= 1;
+            listCars();
+        } else {
+            System.out.println("You are on the first page already")
+        }
+   }
+
     @Override
     public String render() {
         System.out.println("Welcome to car app Home!");
-        System.out.println("0 List all cars for sale, 1 go to my page, 2 exit");
+        System.out.println("0 List cars for sale, 1 go to my page, 2 exit");
         Scanner input = new Scanner(System.in);
         while(true){
             int actionCode = input.nextInt();
             int action = getAction(actionCode);
             switch(action){
-                case Action.LIST:
-                    break;
                 case Action.GOTOUSER:
-                    break;
+                    return "user";
                 case Action.GOTONEXTPAGE:
+                    nextPage();
                     break;
                 case Action.GOTOPREVPAGE:
+                    prevPage();
                     break;
                 case Action.GOTOCAR:
-                    break;
+                    getCarSelection();
+                    return "cardetail";
                 case Action.EXIT:
-                    break;
+                    return "exit";
                 case Action.DEFAULT:
                     break;
             }
