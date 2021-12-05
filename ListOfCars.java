@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 public class ListOfCars implements Serializable{
-    ArrayList<Vehicle> carList;
+    static ArrayList<Vehicle> carList;
     ListOfCars(){
         carList = new ArrayList<Vehicle>();
         try {
@@ -44,11 +44,11 @@ public class ListOfCars implements Serializable{
         return this.carList;
     }
 
-    public void serialize(){
+    public static void serialize(){
         try{
             FileOutputStream fos = new FileOutputStream("../data/carListSerialization.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(this.carList);
+            oos.writeObject(carList);
           }
           catch(IOException i){
              System.out.println("yuh");
