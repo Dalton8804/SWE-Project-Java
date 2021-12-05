@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="00f46407-72d5-4f63-b38d-daf76105cc3d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/Router.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Home.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="actions.on.save" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -61,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638332670603</updated>
       <workItem from="1638498995024" duration="5502000" />
-      <workItem from="1638586312824" duration="8508000" />
+      <workItem from="1638586312824" duration="11088000" />
     </task>
     <servers />
   </component>

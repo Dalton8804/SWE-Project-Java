@@ -9,7 +9,8 @@ public class Home extends Page {
         GOTONEXTPAGE,
         GOTOPREVPAGE,
         GOTOCAR,
-        EXIT
+        EXIT,
+        DEFAULT
     }
 
     private int carListCursor;
@@ -40,12 +41,23 @@ public class Home extends Page {
                     return Action.GOTOUSER;
                 case 2:
                     return Action.EXIT;
+                case default:
+                    return Action.DEFAULT;
             }
         }else{
             switch(actionCode){
                 case 0:
-                    return
-
+                    return Action.GOTONEXTPAGE;
+                case 1:
+                    return Action.GOTOPREVPAGE;
+                case 2:
+                    return Action.GOTOUSER;
+                case 3:
+                    return Action.GOTOCAR;
+                case 4:
+                    return Action.EXIT;
+                case default:
+                    return Action.DEFAULT;
             }
         }
     }
@@ -59,23 +71,25 @@ public class Home extends Page {
             int actionCode = input.nextInt();
             int action = getAction(actionCode);
             switch(action){
-                case LIST:
-                    System.out.println("Listing cars");
+                case Action.LIST:
                     break;
-                case GOTOUSER:
-                    return "user";
-                case GOTOCAR:
-                    String selectedCar = getCarSelection();
-                    appState.put("selectedCar", selectedCar);
-                    return "cardetail";
-                case default:
-                    System.out.println("Invalid input!");
+                case Action.GOTOUSER:
+                    break;
+                case Action.GOTONEXTPAGE:
+                    break;
+                case Action.GOTOPREVPAGE:
+                    break;
+                case Action.GOTOCAR:
+                    break;
+                case Action.EXIT:
+                    break;
+                case Action.DEFAULT:
                     break;
             }
             if(carListCursor == 0){
-                System.out.println("0 List all cars for sale, 1 go to my page");
+                System.out.println("0 List all cars for sale, 1 go to my page, 3 exit");
             } else {
-                System.out.println("0 go to next page, 1 go to previous page, 2  go to my page, 3  go to a car by vin");
+                System.out.println("0 go to next page, 1 go to previous page, 2  go to my page, 3  go to a car by vin, 4 exit");
             }
         }
         return "home";
