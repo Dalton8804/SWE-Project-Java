@@ -1,12 +1,23 @@
 import java.util.HashMap;
 
 public class Router {
-    HashMap<String, Page> allRoutes = new HashMap<String,Page>();
-    String currentRoute;
-    boolean running = true;
-    
+    private HashMap<String, Page> allRoutes;
+    private String currentRoute;
+    private boolean running;
+
+    Router(String name, Page defaultPage){
+        this.allRoutes = new HashMap<String,Page>();
+        this.allRoutes.put(name, defaultPage);
+        this.allRoutes.put("default", defaultPage);
+        this.currentRoute = "default";
+    }
+
+    public void addPage(String label, page){
+        allRoutes.put(label, page);
+    }
+
     public Page loadPage(){
-        return this.allRoutes.get(currentRoute);
+        return allRoutes.get(currentRoute);
     }
 
     public void startRouter(){

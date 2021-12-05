@@ -1,5 +1,6 @@
 import java.util.HashMap;
-import java.util
+import java.util.Scanner;
+
 public class Home extends Page {
 
     enum Action {
@@ -13,10 +14,12 @@ public class Home extends Page {
 
     private int carListCursor;
 
+    private int carListCursor = 0;
+    private ListOfUsers userList;
+    private ListOfCars carList;
 
-    Home(HashMap<String, String> appState, ListOfCars carList, ListOfUsers userList){
+    Home(HashMap<String, String> appState, ListOfCars carList, ListOfUsers userList) {
         this.carListCursor = 0;
-        this.appState = appState;
         this.carList = carList;
         this.userList = userList;
         super(appState);

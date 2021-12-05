@@ -1,15 +1,17 @@
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 class Vehicle implements Serializable{
-    String VIN,type,make,model,country,size,color,engine,fuelType,currentLocation;
-    int year,mileage,mpg;
+    String VIN,type,make,model,country,size,color, transmission,engineCylinders, fuelType,currentLocation;
+    int year,mileage,mpg, price;
     double monthlyPayments;
     String[] addedFeatures;
 
     Vehicle(String VIN, String type, String make, String model,
             String country, int year, int mileage, String[] addedFeatures,
-            String size, String color, String engine, int mpg, String fuelType,
-            String currentLocation, double monthlyPayments) {
+            String size, String color, String transmission, String engineCylinders, int mpg, String fuelType,
+            String currentLocation, double monthlyPayments, int price) {
         this.VIN = VIN;
         this.type = type;
         this.make = make;
@@ -20,11 +22,19 @@ class Vehicle implements Serializable{
         this.addedFeatures = addedFeatures;
         this.size = size;
         this.color = color;
-        this.engine = engine;
+        this.transmission = transmission;
+        this.engineCylinders = engineCylinders;
         this.mpg = mpg;
         this.fuelType = fuelType;
         this.currentLocation = currentLocation;
         this.monthlyPayments = monthlyPayments;
+        if (price>0)
+            this.price = price;
+        this.price = calcPrice();
+    }
+
+    private int calcPrice() {
+        return (int)Math.floor(Math.random()*(47000-25000)+25000);
     }
 
     // Simple constructor for testing. Delete this when no longer needed
@@ -79,11 +89,18 @@ class Vehicle implements Serializable{
         this.color = color;
     }
 
-    public String getEngine() {
-        return this.engine;
+    public String getTransmission() {
+        return this.transmission;
     }
-    public void setEngine(String engine) {
-        this.engine = engine;
+    public String getEngineCylinders(){
+        return this.engineCylinders;
+    }
+    public void setTransmission(String transmission) {
+        this.transmission = transmission;
+    }
+
+    public void setEngineCylinders(String engineCylinders){
+        this.engineCylinders = engineCylinders;
     }
 
     public String getFuleType() {
@@ -124,8 +141,14 @@ class Vehicle implements Serializable{
     public double getMonthlyPayments() {
         return this.monthlyPayments;
     }
+    public int getPrice(){
+        return this.price;
+    }
     public void setMonthlyPayments(double monthlyPayments) {
         this.monthlyPayments = monthlyPayments;
+    }
+    public void setPrice(int price1){
+        this.price = price1;
     }
 
     public String[] getAddedFeatures() {
@@ -136,8 +159,26 @@ class Vehicle implements Serializable{
     }
 
     public String toString(){
-        String str = "";
-        return str;
+        return this.VIN;
+        /*
+        String str = "---Price: $" + this.price + " VIN: " + this.getVIN() + " Make: " + this.make + " Model: " + this.model + " Country: " + this.country + " Type: " + this.type +
+                " Year: " + this.year + " Milage: " + this.mileage + " Optional Features: " + printFeatures() + "\n\tSize: " + this.size + " Color: " +
+                this.color + " Transmission: " + this.transmission + " Engine Cylinders: " + this.engineCylinders + " MPG: " + this.mpg + " Fuel Type: " + this.fuelType + " Location: " + this.currentLocation;
+        return str;*/
     }
 
+    private String printFeatures() {
+        String temp = "";
+        if(addedFeatures.length != 0)
+        temp = temp + "{";
+        else
+            return "{None}";
+        for (int i = 0; i < this.addedFeatures.length; i++) {
+            if (this.addedFeatures.length - 1 == i)
+                temp = temp + this.addedFeatures[i] + "} ";
+            else
+                temp = temp + this.addedFeatures[i] + ", ";
+        }
+        return temp;
+    }
 }
