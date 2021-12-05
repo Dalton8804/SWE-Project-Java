@@ -159,12 +159,10 @@ class Vehicle implements Serializable{
     }
 
     public String toString(){
-        return this.VIN;
-        /*
         String str = "---Price: $" + this.price + " VIN: " + this.getVIN() + " Make: " + this.make + " Model: " + this.model + " Country: " + this.country + " Type: " + this.type +
                 " Year: " + this.year + " Milage: " + this.mileage + " Optional Features: " + printFeatures() + "\n\tSize: " + this.size + " Color: " +
                 this.color + " Transmission: " + this.transmission + " Engine Cylinders: " + this.engineCylinders + " MPG: " + this.mpg + " Fuel Type: " + this.fuelType + " Location: " + this.currentLocation;
-        return str;*/
+        return str;
     }
 
     private String printFeatures() {

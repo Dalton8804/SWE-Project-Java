@@ -14,20 +14,29 @@ public class Main {
          /*LoginPage login = new LoginPage(new HashMap<String,String>(), new ListOfCars(), new ListOfUsers());
          exitApp();
          login.render(); // Class cast exception ListOfUser.java line 43, in checkName();*/
+         
+         /* FUNCTIONING COMPARATOR SHIT YUHHHHHHH
          ListOfCars carList = new ListOfCars();
          exitApp();
-         carList.addCar(new Vehicle("4 compare test"));
-         carList.addCar(new Vehicle("1 compare test"));
-         carList.addCar(new Vehicle("3 compare test"));
-         carList.addCar(new Vehicle("2 compare test"));
          System.out.println(carList.getListOfCars());
          Collections.sort(carList.getListOfCars(), Comparator.comparing((Vehicle car) -> car.getVIN())); 
          System.out.println(carList.getListOfCars());
+         */
+
+         // PRINTS THE NUMBERS OF VEHICLES
+         ListOfCars carList = new ListOfCars();
+         System.out.println(carList.getListOfCars().size());
+         
+         /* GENERATES 1000 CARS AND SERIALIZES THEM
+         carList = Sort.makeCars(1000,carList);
+         System.out.println(carList.getCar(0));
+         carList.serialize();*/
+
 
       }
 
     public static void exitApp(){
-       ListOfCars.serialize();
+       //ListOfCars.serialize();
        ListOfUsers.serialize();
     }
 }
