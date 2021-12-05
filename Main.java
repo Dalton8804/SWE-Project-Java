@@ -29,11 +29,6 @@ public class Main {
          */
 
          // PRINTS THE NUMBERS OF VEHICLES
-         ListOfCars carList = new ListOfCars();
-         UserList userList = new UserList();
-         AppState appState = new AppState();
-         System.out.println(carList.getListOfCars().size());
-         Router router = new Router();
          /* GENERATES 1000 CARS AND SERIALIZES THEM
          carList = Sort.makeCars(1000,carList);
          System.out.println(carList.getCar(0));
