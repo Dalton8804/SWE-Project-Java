@@ -31,7 +31,7 @@ public class Main {
          System.out.println(carList.getListOfCars());
          */
 
-         
+         // PRINTS THE NUMBERS OF VEHICLES
          /* GENERATES 1000 CARS AND SERIALIZES THEM
          carList = Sort.makeCars(1000,carList);
          System.out.println(carList.getCar(0));
