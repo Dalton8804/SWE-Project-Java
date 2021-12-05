@@ -1,15 +1,10 @@
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.*;
+
 
 
 public class Main {
    public static void main(String args[]) {
+      
          HashMap<String,String> appState = new HashMap<String,String>();
          ListOfCars carList = new ListOfCars();
          ListOfUsers userList = new ListOfUsers();
@@ -22,7 +17,7 @@ public class Main {
          router.logging();
          router.startRouter();
          
-
+         
          
          /* FUNCTIONING COMPARATOR SHIT YUHHHHHHH
          ListOfCars carList = new ListOfCars();
@@ -33,10 +28,14 @@ public class Main {
          */
 
          // PRINTS THE NUMBERS OF VEHICLES
-         /* GENERATES 1000 CARS AND SERIALIZES THEM
-         carList = Sort.makeCars(1000,carList);
-         System.out.println(carList.getCar(0));
-         carList.serialize();*/
+         //GENERATES 1000 CARS AND SERIALIZES THEM
+         /*ListOfCars carList = new ListOfCars();
+         //carList = Sort.makeCars(10,carList);
+         carList.serialize();
+         String[] arr = carList.getCar(60).getAddedFeatures();
+         for(String x: arr)
+            System.out.println(x);
+         System.out.println(carList.size());*/
 
 
       }

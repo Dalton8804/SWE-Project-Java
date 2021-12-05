@@ -10,6 +10,7 @@ class ListOfUsers implements Serializable{
     static ArrayList<User> userList;
    
     ListOfUsers(){
+        userList = new ArrayList<User>();
         try {
             FileInputStream fileIn = new FileInputStream("../data/userListSerialization.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -17,12 +18,8 @@ class ListOfUsers implements Serializable{
             in.close();
             fileIn.close();
          } catch (IOException i) {
-            i.printStackTrace();
-            System.out.println("IOException");
             return;
          } catch (ClassNotFoundException c) {
-            c.printStackTrace();
-            System.out.println("ClassNotFoundException");
             return;
          }
     }
@@ -73,5 +70,14 @@ class ListOfUsers implements Serializable{
           catch(IOException i){
              System.out.println("yuh");
           }
+    }
+
+    public void deleteUser(String removeName) {
+        ArrayList<User> toRemove = new ArrayList<User>();
+        for (User u: userList)
+            if (u.getUsername().equals(removeName))
+                toRemove.add(u);
+
+        userList.removeAll(toRemove);
     }
 }

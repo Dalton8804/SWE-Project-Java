@@ -56,10 +56,17 @@ public class ListOfCars implements Serializable{
     }
 
     public void removeCar(String VINtoRemove) {
+        ArrayList<Vehicle> toRemove = new ArrayList<Vehicle>();
         for (Vehicle v: carList){
             if (v.getVIN().equals(VINtoRemove)){
-                carList.remove(v);
+                toRemove.add(v);
             }
+        }
+        if (toRemove.size()>0){
+            carList.removeAll(toRemove);
+            System.out.println("Removed vehicle with vin "+VINtoRemove);
+        } else {
+            System.out.println("No car with such vin.");
         }
     }
 }

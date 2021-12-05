@@ -29,8 +29,6 @@ public class AccountPage extends Page{
             break;
             case 2:
                 renderEditAccount();
-                // implement account editing
-                // change username, email, password
             break;
             case 3: 
                 nextRoute = "login";
@@ -42,16 +40,58 @@ public class AccountPage extends Page{
         return nextRoute;
     }
     private void renderEditAccount() {
-        System.out.println("Edit Account selected");
+        System.out.println("Edit Account selected"+'\n'+
+            "Which attribute would you like to edit?"+'\n'+
+            "1: Username, 2: Email, 3: Password, 4: Delete Account, 5: None,take me back");
+        int choice = input.nextInt();
+        input.nextLine();
+        switch(choice){
+            case 1: 
+                System.out.println("What would you like us to call you instead?");
+                String newName = input.nextLine();
+                userList.getUserByName(appState.get("username")).setName(newName);
+                appState.put("username", newName);
+                ListOfUsers.serialize();
+                
+            break;
+            case 2: 
+                System.out.println("What would you like your new email to be?"); 
+                String newEmail = input.nextLine();
+                userList.getUserByName(appState.get("username")).setEmail(newEmail);
+                appState.put("email", newEmail);
+                ListOfUsers.serialize();
+            break;
+            case 3: 
+                System.out.println("What would you like your new password to be?");
+                String newPass = input.nextLine();
+                userList.getUserByName(appState.get("username")).setPassword(newPass);
+                appState.put("password", newPass);
+                ListOfUsers.serialize();
+            break;
+            case 4: 
+                System.out.println("Are you sure you want to delete your account?"+'\n'+
+                    "This step is permanent and will delete all of your listed vehicles as well."+'\n'+
+                    "Type \'yes\' without quotes if you still want to continue.");
+                if (input.nextLine().equals("yes"))
+                    userList.deleteUser(appState.get("username"));
+                    
+            break;
+            case 5: break;
+            default: break;
+        }
+        if (choice!=4)
+            nextRoute="account";
+        else 
+            nextRoute ="login";
     }
     private void renderViewListings() {
         System.out.println("Displayed Listings");
-        System.out.println("1: List New Vehicle, 2: Remove Listed Vehicle");
+        System.out.println("1: List New Vehicle, 2: Remove Listed Vehicle, 3: Return to Account, 4: Exit App");
         int choice = input.nextInt();
         input.nextLine();
         switch (choice){
             case 1: 
-                System.out.println("Enter VIN:");
+                System.out.println("Enter VIN(17 digit string including uppercase letters and digits only):");
                 String VIN = input.nextLine();
                 System.out.println("Enter type(coupe, suv, truck, etc.):");
                 String type = input.nextLine();
@@ -87,7 +127,7 @@ public class AccountPage extends Page{
                 String currentLocation = input.nextLine();
                 System.out.println("Enter monthly payments:");
                 int monthlyPayments = input.nextInt();
-                System.out.println("Enter price:");
+                System.out.println("Enter price (if you dont know put 0, we will calculate price for you):");
                 int price = input.nextInt();
                 input.nextLine();
 
@@ -98,12 +138,17 @@ public class AccountPage extends Page{
 
 
                 carList.addCar(newCar);
+                
             break;
             case 2: 
                 System.out.println("Enter the VIN of the car you would like to remove");
                 String VINtoRemove = input.nextLine();
                 carList.removeCar(VINtoRemove);
+                
             break;
+            case 3: break;
+            case 4: Main.exitApp(); break;
         }
+        nextRoute="account";
     }
 }

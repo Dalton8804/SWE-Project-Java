@@ -33,4 +33,11 @@ public class User implements Serializable{
     public String getID(){
         return this.dlNum;
     }
+    public void setName(String newName) {
+        this.username = newName;
+    }
+    public void setEmail(String newEmail) {
+        this.email = newEmail;
+    }
+
 }
