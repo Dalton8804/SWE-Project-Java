@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.*;
 
-import javax.imageio.plugins.tiff.ExifGPSTagSet;
 
 public class Main {
    public static void main(String args[]) {
@@ -16,8 +15,10 @@ public class Main {
          ListOfUsers userList = new ListOfUsers();
          LoginPage login = new LoginPage(appState, carList, userList);
          Home home = new Home(appState,carList,userList);
+         AccountPage account = new AccountPage(appState,carList,userList);
          Router router = new Router("login",login);
          router.addPage("home", home);
+         router.addPage("account", account);
          router.logging();
          router.startRouter();
          

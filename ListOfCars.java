@@ -54,4 +54,12 @@ public class ListOfCars implements Serializable{
              System.out.println("yuh");
           }
     }
+
+    public void removeCar(String VINtoRemove) {
+        for (Vehicle v: carList){
+            if (v.getVIN().equals(VINtoRemove)){
+                carList.remove(v);
+            }
+        }
+    }
 }

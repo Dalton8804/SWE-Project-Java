@@ -177,7 +177,7 @@ public class Sort
                         size, color, transmission, engineCylinders,
                         mpg, fuelType, currentLocation, monthlyPayments, price);
 
-
+                
                 carList.addCar(newCar);
             }
             return carList;

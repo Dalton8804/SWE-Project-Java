@@ -34,7 +34,7 @@ public class Router {
             Page currentPage = loadPage();
             currentRoute = currentPage.render();
             if(dev){
-                System.out.println("the next page " + currentRoute);
+                System.out.println("The next page " + currentRoute);
             }
         }
     }
