@@ -156,7 +156,7 @@ public List<Vehicle> filterList(Filters filterObject) {
     boolean meetsCriteria = true;
 
     if (filterObject.make != null) { //Check if they are filtering on this prop
-      if (filterObject.make != filterObject.make) {
+      if (filterObject.make != v.make) {
         meetsCriteria = false;
       } 
     }
