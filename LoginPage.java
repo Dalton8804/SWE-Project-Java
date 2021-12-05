@@ -6,7 +6,7 @@ public class LoginPage extends Page{
     HashMap<String,String> appState;
     ListOfUsers userList;
     ListOfCars carList;
-    String nextRoute;
+    String nextRoute = "default";
     
     LoginPage(HashMap<String,String> appState, ListOfCars carList, ListOfUsers userList){
         super(appState);
@@ -78,7 +78,6 @@ public class LoginPage extends Page{
         appState.put("email",userList.getUserByName(username).getEmail());
         appState.put("password",userList.getUserByName(username).getPassword());
         appState.put("id",userList.getUserByName(username).getID());
-        in.close();
         
         return nextRoute;
     }

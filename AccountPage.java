@@ -1,15 +1,109 @@
 import java.util.HashMap;
+import java.util.Scanner;
 
-public class AccountPage {
+public class AccountPage extends Page{
+
     HashMap<String,String> appState;
     ListOfCars carList;
     ListOfUsers userList;
-    AccountPage(HashMap<String,String> appState, ListOfCars carList, ListOfUsers userList){
+    String nextRoute;
+
+    Scanner input = new Scanner(System.in);
+
+    public AccountPage(HashMap<String,String> appState, ListOfCars carList, ListOfUsers userList){
+        super(appState);
         this.appState = appState;
         this.carList = carList;
         this.userList = userList;
     }
-    String render(){
-        return "Render AccountPage";
+    public String render(){
+        System.out.println("Welcome to your Account Page "+ appState.get("username")+"!");
+        System.out.println("Select an option below to continue");
+        System.out.println("1: View Listings, 2: Edit Account, 3: Logout, 4: Exit App");
+        int choice = input.nextInt();
+        switch(choice){
+            case 1:
+                renderViewListings();
+                // Use germy's filtering to filter by vehicles that match the user id
+                // display only the vehicles for sale by active user
+            break;
+            case 2:
+                renderEditAccount();
+                // implement account editing
+                // change username, email, password
+            break;
+            case 3: 
+                nextRoute = "login";
+            break;
+            case 4: 
+                Main.exitApp();
+            break;
+        }
+        return nextRoute;
+    }
+    private void renderEditAccount() {
+        System.out.println("Edit Account selected");
+    }
+    private void renderViewListings() {
+        System.out.println("Displayed Listings");
+        System.out.println("1: List New Vehicle, 2: Remove Listed Vehicle");
+        int choice = input.nextInt();
+        input.nextLine();
+        switch (choice){
+            case 1: 
+                System.out.println("Enter VIN:");
+                String VIN = input.nextLine();
+                System.out.println("Enter type(coupe, suv, truck, etc.):");
+                String type = input.nextLine();
+                System.out.println("Enter make:");
+                String make = input.nextLine();
+                System.out.println("Enter model:");
+                String model = input.nextLine();
+                System.out.println("Enter country of production:");    
+                String country = input.nextLine();
+                System.out.println("Enter year:");
+                int year = input.nextInt();
+                System.out.println("Enter mileage:");
+                int mileage = input.nextInt();
+                input.nextLine();
+                System.out.println("Enter added features(seperate multiple features by comma):");
+                String optionalFeaturesString = input.nextLine(); // parse into array
+                optionalFeaturesString = optionalFeaturesString.trim();
+                String[] addedFeatures = optionalFeaturesString.split(",");
+                System.out.println("Enter size(compact, mid-size, full-size):");
+                String size = input.nextLine();
+                System.out.println("Enter color:");
+                String color = input.nextLine();
+                System.out.println("Enter transmission(auto or manual):");
+                String transmission  = input.nextLine();
+                System.out.println("Enter number of cylinders in engine:");
+                String engineCylinders = input.nextLine();
+                System.out.println("Enter miles per gallon:");
+                int mpg = input.nextInt();
+                input.nextLine();
+                System.out.println("Enter fuel type(gasoline, diesel):");
+                String fuelType = input.nextLine();
+                System.out.println("Enter current location:");
+                String currentLocation = input.nextLine();
+                System.out.println("Enter monthly payments:");
+                int monthlyPayments = input.nextInt();
+                System.out.println("Enter price:");
+                int price = input.nextInt();
+                input.nextLine();
+
+                Vehicle newCar = new Vehicle(VIN, type, make, model,
+                        country, year, mileage, addedFeatures,
+                        size, color, transmission, engineCylinders,
+                        mpg, fuelType, currentLocation, monthlyPayments, price);
+
+
+                carList.addCar(newCar);
+            break;
+            case 2: 
+                System.out.println("Enter the VIN of the car you would like to remove");
+                String VINtoRemove = input.nextLine();
+                carList.removeCar(VINtoRemove);
+            break;
+        }
     }
 }

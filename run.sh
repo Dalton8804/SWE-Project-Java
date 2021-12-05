@@ -1,4 +1,4 @@
 #!/bin/bash
-javac -cp *.java -d ./bin
+javac *.java -d ./bin
 cd ./bin
 java Main
