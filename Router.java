@@ -3,7 +3,7 @@ import java.util.HashMap;
 public class Router {
     private HashMap<String, Page> allRoutes;
     private String currentRoute;
-    private boolean running;
+    private boolean running = true;
     private boolean dev;
     Router(String name, Page defaultPage){
         this.allRoutes = new HashMap<String,Page>();

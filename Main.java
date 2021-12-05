@@ -15,9 +15,12 @@ public class Main {
          ListOfCars carList = new ListOfCars();
          ListOfUsers userList = new ListOfUsers();
          LoginPage login = new LoginPage(appState, carList, userList);
-         login.render();
-         exitApp();
-         System.out.println(appState.get("username"));
+         Home home = new Home(appState,carList,userList);
+         Router router = new Router("login",login);
+         router.addPage("home", home);
+         router.logging();
+         router.startRouter();
+         
 
          
          /* FUNCTIONING COMPARATOR SHIT YUHHHHHHH
@@ -28,12 +31,7 @@ public class Main {
          System.out.println(carList.getListOfCars());
          */
 
-         // PRINTS THE NUMBERS OF VEHICLES
-         ListOfCars carList = new ListOfCars();
-         UserList userList = new UserList();
-         AppState appState = new AppState();
-         System.out.println(carList.getListOfCars().size());
-         Router router = new Router();
+         
          /* GENERATES 1000 CARS AND SERIALIZES THEM
          carList = Sort.makeCars(1000,carList);
          System.out.println(carList.getCar(0));

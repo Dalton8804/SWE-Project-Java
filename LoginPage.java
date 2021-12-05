@@ -21,7 +21,7 @@ public class LoginPage extends Page{
         System.out.println("Welcome! Please start by entering your username :)");
         
         String username = in.nextLine();
-
+        
         // Account Exists
         if(userList.checkName(username)){
             System.out.println("Welcome back "+username+"!");
@@ -32,6 +32,7 @@ public class LoginPage extends Page{
                     System.out.println("Choose an option (enter the number of your selection):");
                     System.out.println("1: Home, 2: Account, 3: Logout, 4: Exit");
                     int choice = in.nextInt();
+                    in.nextLine();
                     switch(choice){
                         case 1: 
                             //  render Home 

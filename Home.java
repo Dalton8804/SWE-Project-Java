@@ -94,6 +94,7 @@ public class Home extends Page {
         System.out.println("0 List cars for sale, 1 go to my page, 2 exit");
         Scanner input = new Scanner(System.in);
         while(true){
+            
             int actionCode = input.nextInt();
             Action action = getAction(actionCode);
             switch(action){
