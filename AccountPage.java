@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -86,9 +87,8 @@ public class AccountPage extends Page{
             nextRoute ="login";
     }
     private void renderViewListings() {
-        // USE CHANDLERS CODE TO DISPLAY CARS FILTERED BY THE USER IN APPSTATE
         Main.clearScreen();
-        System.out.println("Displayed Listings");
+        listCars(carList.getListOfCars()); // YOURE WORKING HERE DUMB FUCK
         System.out.println("1: List New Vehicle, 2: Remove Listed Vehicle, 3: Return to Account, 4: Exit App");
         int choice = input.nextInt();
         input.nextLine();
@@ -140,17 +140,40 @@ public class AccountPage extends Page{
 
                 newCar.setUserTag(appState.get("username"));
                 carList.addCar(newCar);
-                
+                nextRoute="account";
             break;
             case 2: 
                 System.out.println("Enter the VIN of the car you would like to remove");
                 String VINtoRemove = input.nextLine();
                 carList.removeCar(VINtoRemove);
-                
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {}
+                nextRoute="account";
             break;
-            case 3: break;
-            case 4: Main.exitApp(); break;
+            case 3: nextRoute="account";break;
+            case 4: nextRoute="exit"; break;
         }
-        nextRoute="account";
+        
+    }
+    private ArrayList<Vehicle> filterUsersCars() {
+        FilterFun ft = new FilterFun();
+        Filters filter = new Filters();
+        filter.userTag = appState.get("username");
+        ArrayList<Vehicle> listOfUsersCars = new ArrayList<Vehicle>();
+        listOfUsersCars = ft.filterList(filter, carList);
+
+        return listOfUsersCars;
+    }
+
+    private void listCars(ArrayList<Vehicle> arr){
+        int i=0;
+        System.out.println("List of Cars");
+        for(Vehicle v: arr){
+            if (v.userTag.equals(appState.get("username"))) {
+                System.out.println((i + 1) + ". Vin: " + v.getVIN() + ", Make: " + v.getMake() + ", Model: " + v.getModel());
+                i++;
+            }
+        }
     }
 }
