@@ -69,7 +69,6 @@ public class AccountPage extends Page {
         userList.getUserByName(appState.get("username")).setName(newName);
         appState.put("username", newName);
         ListOfUsers.serialize();
-
         break;
       case 2:
         System.out.println("What would you like your new email to be?");
@@ -96,7 +95,6 @@ public class AccountPage extends Page {
         if (input.nextLine().equals("yes")) userList.deleteUser(
           appState.get("username")
         );
-
         break;
       case 5:
         break;
@@ -220,7 +218,9 @@ public class AccountPage extends Page {
       if (v.userTag.equals(appState.get("username"))) {
         System.out.println(
           (i + 1) +
-          ". Vin: " +
+          ". Price: " +
+          v.getPrice() +
+          ", Vin: " +
           v.getVIN() +
           ", Make: " +
           v.getMake() +

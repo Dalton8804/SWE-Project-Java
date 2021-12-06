@@ -76,7 +76,9 @@ public class Home extends Page {
       Vehicle c = carList.getCar(i);
       System.out.println(
         (i + 1) +
-        ". Vin: " +
+        ". Price: $" +
+        c.getPrice() +
+        ", Vin: " +
         c.getVIN() +
         ", Make: " +
         c.getMake() +

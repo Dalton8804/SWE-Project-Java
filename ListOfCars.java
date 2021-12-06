@@ -55,7 +55,7 @@ public class ListOfCars implements Serializable {
       ObjectOutputStream oos = new ObjectOutputStream(fos);
       oos.writeObject(carList);
     } catch (IOException i) {
-      System.out.println("yuh");
+      System.out.println("IOException on Serialization");
     }
   }
 

@@ -60,7 +60,7 @@ public class CarDetail extends Page {
   public String render() {
     Input input = Input.getInstance();
     // Finds the currently selected car in list by Index
-    if (selectedCarIndex >= 0 && selectedCarIndex < carList.size()) {
+    if (selectedCarIndex >= 0 && selectedCarIndex < carList.getListOfCars().size()) {
       selectedVehicle = carList.getCar(selectedCarIndex);
     } else {
       System.out.println("Invalid selection!");

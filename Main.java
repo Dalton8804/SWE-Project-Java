@@ -29,14 +29,11 @@ public class Main {
          System.out.println(carList.getListOfCars());
          */
 
-    // PRINTS THE NUMBERS OF VEHICLES
-    //GENERATES 1000 CARS AND SERIALIZES THEM
-    /*ListOfCars carList = new ListOfCars();
-         //carList = Sort.makeCars(10,carList);
+    /*// PRINTS THE NUMBERS OF VEHICLES
+         //GENERATES 1000 CARS AND SERIALIZES THEM
+         //ListOfCars carList = new ListOfCars();
+         carList = Sort.makeCars(1000,carList);
          carList.serialize();
-         String[] arr = carList.getCar(60).getAddedFeatures();
-         for(String x: arr)
-            System.out.println(x);
          System.out.println(carList.size());*/
 
   }
