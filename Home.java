@@ -26,9 +26,9 @@ public class Home extends Page {
     }
 
     public void getCarSelection(Input input){
-        System.out.println("Please enter a vin:");
-        String vin = input.getLine();
-        appState.put("selectedCar", vin);
+        System.out.println("Please enter an index:");
+        String index = input.getLine();
+        appState.put("selectedCar", index);
         return;
     }
 
@@ -99,7 +99,7 @@ public class Home extends Page {
             Action action = getAction(actionCode);
             switch(action){
                 case GOTOUSER:
-                    return "user";
+                    return "account";
                 case GOTONEXTPAGE:
                     nextPage();
                     break;
@@ -119,7 +119,7 @@ public class Home extends Page {
             if(carListCursor == -4){
                 System.out.println("0 List all cars for sale, 1 Go to my page, 3 Exit");
             } else {
-                System.out.println("0 Go to next page, 1 Go to previous page, 2  Go to my page, 3 Go to a car by vin, 4 Exit");
+                System.out.println("0 Go to next page, 1 Go to previous page, 2  Go to my account page, 3 Go to a car by vin, 4 Exit");
             }
         }
     }
