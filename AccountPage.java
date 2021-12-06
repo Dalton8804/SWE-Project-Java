@@ -19,7 +19,6 @@ public class AccountPage extends Page{
     public String render(){
         Main.clearScreen();
         System.out.println("Welcome to your Account Page "+ appState.get("username")+"!");
-        System.out.println("Select an option below to continue");
         System.out.println("1: View Listings, 2: Edit Account, 3: Logout, 4: Exit App");
         int choice = input.nextInt();
         switch(choice){
@@ -35,17 +34,18 @@ public class AccountPage extends Page{
                 nextRoute = "login";
             break;
             case 4: 
-                Main.exitApp();
+                nextRoute="exit";
             break;
         }
         return nextRoute;
     }
     private void renderEditAccount() {
-        System.out.println("Edit Account selected"+'\n'+
-            "Which attribute would you like to edit?"+'\n'+
+        Main.clearScreen();
+        System.out.println("Which attribute would you like to edit?"+'\n'+
             "1: Username, 2: Email, 3: Password, 4: Delete Account, 5: None,take me back");
         int choice = input.nextInt();
         input.nextLine();
+        Main.clearScreen();
         switch(choice){
             case 1: 
                 System.out.println("What would you like us to call you instead?");
@@ -87,6 +87,7 @@ public class AccountPage extends Page{
     }
     private void renderViewListings() {
         // USE CHANDLERS CODE TO DISPLAY CARS FILTERED BY THE USER IN APPSTATE
+        Main.clearScreen();
         System.out.println("Displayed Listings");
         System.out.println("1: List New Vehicle, 2: Remove Listed Vehicle, 3: Return to Account, 4: Exit App");
         int choice = input.nextInt();
