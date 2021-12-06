@@ -66,7 +66,7 @@ public class Home extends Page {
         System.out.println("Results for page " + (carListCursor / 4));
         for(int i = carListCursor; i < carListCursor + 4 && i < carList.size(); i++){
             Vehicle c = carList.getCar(i);
-            System.out.println((i + 1) + ". Vin: " + c.getVIN() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
+            System.out.println((i + 1)+". Price: $"+c.getPrice()+", Vin: " + c.getVIN() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
         }
         return;
     }

@@ -19,7 +19,7 @@ public class ListOfCars implements Serializable{
             fileIn.close();
          } catch (IOException i) {
             i.printStackTrace();
-            System.out.println("IOException");
+            System.out.println("IOException on Deserialization");
             return;
          } catch (ClassNotFoundException c) {
             c.printStackTrace();
@@ -51,7 +51,7 @@ public class ListOfCars implements Serializable{
             oos.writeObject(carList);
           }
           catch(IOException i){
-             System.out.println("yuh");
+             System.out.println("IOException on Serialization");
           }
     }
 
