@@ -107,8 +107,9 @@ public class Home extends Page {
 
   @Override
   public String render() {
+    Main.clearScreen();
     System.out.println("Welcome to car app Home!");
-    System.out.println("0 List cars for sale, 1 go to my page, 2 exit");
+    System.out.println("0 List cars for sale, 1 My account page, 2 EXIT");
     Input input = Input.getInstance();
     while (true) {
       int actionCode = input.getInt();
@@ -117,9 +118,11 @@ public class Home extends Page {
         case GOTOUSER:
           return "account";
         case GOTONEXTPAGE:
+          Main.clearScreen();
           nextPage();
           break;
         case GOTOPREVPAGE:
+          Main.clearScreen();
           prevPage();
           break;
         case GOTOCAR:

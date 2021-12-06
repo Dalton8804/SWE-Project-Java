@@ -73,4 +73,8 @@ public class ListOfCars implements Serializable {
       System.out.println("No car with such vin.");
     }
   }
+
+  public void removeCarByIndex(int index) {
+    this.carList.remove(index);
+  }
 }

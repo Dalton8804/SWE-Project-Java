@@ -36,6 +36,7 @@ public class Router {
 
   public void startRouter() {
     while (running) {
+      Main.clearScreen();
       Page currentPage = loadPage();
       if (currentPage == null) {
         running = false;
