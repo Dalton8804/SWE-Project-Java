@@ -15,24 +15,14 @@ public class Main {
     LoginPage login = new LoginPage(appState, carList, userList);
     Home home = new Home(appState, carList, userList);
     AccountPage account = new AccountPage(appState, carList, userList);
-    CarDetail carDetail = new CarDetail(appState, carList, userList);
     Router router = new Router("login", login);
     router.addPage("home", home);
     router.addPage("account", account);
-    router.addPage("cardetail", carDetail);
     //router.logging();
     router.startRouter();
     exitApp();
-    /* FUNCTIONING COMPARATOR SHIT YUHHHHHHH
-         ListOfCars carList = new ListOfCars();
-         exitApp();
-         System.out.println(carList.getListOfCars());
-         Collections.sort(carList.getListOfCars(), Comparator.comparing((Vehicle car) -> car.getVIN())); 
-         System.out.println(carList.getListOfCars());
-         */
-
-    /*// PRINTS THE NUMBERS OF VEHICLES
-         //GENERATES 1000 CARS AND SERIALIZES THEM
+    // PRINTS THE NUMBERS OF VEHICLES
+    /*//GENERATES 1000 CARS AND SERIALIZES THEM
          //ListOfCars carList = new ListOfCars();
          carList = Sort.makeCars(1000,carList);
          carList.serialize();

@@ -361,25 +361,36 @@ class Vehicle implements Serializable {
               break;
           }
         }
-        break; //sports cars cost around 36 compact, 43 mid-sized, 50 full-sized
-      case 6:
-        {
-          switch (sizeChoice1) {
-            case 1:
-              totalCost = 15000;
-              break;
-            case 2:
-              totalCost = 20000;
-              break;
-            case 3:
-              totalCost = 24000;
-              break;
-          }
+
+        if (fuelChoice1 == 2)
+            totalCost = totalCost + 2250;
+        else if (fuelChoice1 == 3)
+            totalCost = totalCost + 19000;//electric cars are more expensive to buy at first
+        if ((transmission.toLowerCase()).equals("manual"))//manuals cost about 2000 less than automatics
+            totalCost = totalCost - 2000;
+
+        if (mileage <= 3000)
+            totalCost = totalCost - (2 * mileage);//first 3000 miles average costs 2 dollars a mile
+        if (mileage >= 3000)
+            totalCost = totalCost - 6000 - (.08 * (mileage - 3000));//after that it is .08 a mile average
+
+        if (age >= 1)
+            totalCost = totalCost * .75;
+
+        int capCounter = 0;
+        while(--age > 0 && capCounter<10) {
+            totalCost = totalCost * .83;
+            capCounter++;
         }
-        break; //hatchbacks cost around 24, 20, 15
-      default:
-        System.out.println("you messed it up!");
-        break;
+        double finalAnswer = Math.round(totalCost*100.0)/100.0;
+        //System.out.println("You Vehicles approximate worth is: $" + finalAnswer);
+        if (finalAnswer<0){
+            finalAnswer*=-1;
+        }
+        if (finalAnswer<1000){
+            finalAnswer+=1000;
+        }
+        return finalAnswer;
     }
 
     if (fuelChoice1 == 2) totalCost = totalCost + 2250; else if (
