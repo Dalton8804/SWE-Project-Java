@@ -30,7 +30,7 @@ public class Home extends Page {
   }
 
   public void getCarSelection(Input input) {
-    System.out.println("Please enter an index:");
+    System.out.println("Please enter an index: ");
     String index = input.getLine();
     appState.put("selectedCar", index);
     return;
@@ -141,7 +141,7 @@ public class Home extends Page {
         System.out.println("0 List all cars for sale, 1 Go to my page, 3 Exit");
       } else {
         System.out.println(
-          "0 Go to next page, 1 Go to previous page, 2  Go to my account page, 3 Go to a car by vin, 4 Exit"
+          "0 Go to next page, 1 Go to previous page, 2  Go to my account page, 3 Go to a car, 4 Exit"
         );
       }
     }

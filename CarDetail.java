@@ -60,18 +60,19 @@ public class CarDetail extends Page {
   public String render() {
     Input input = Input.getInstance();
     // Finds the currently selected car in list by Index
-    if (selectedCarIndex >= 0 && selectedCarIndex < carList.getListOfCars().size()) {
+    if (
+      selectedCarIndex >= 0 && selectedCarIndex < carList.getListOfCars().size()
+    ) {
       selectedVehicle = carList.getCar(selectedCarIndex);
     } else {
       System.out.println("Invalid selection!");
       return "home";
     }
-    int actionCode = input.getInt();
-
-    System.out.println("Vin: " + );
+    System.out.println(selectedVehicle.toString());
 
     while (true) {
       System.out.println("0 Buy car, 1 My Account, 2 Home, 3 EXIT");
+      int actionCode = input.getInt();
       Action action = getAction(actionCode);
       switch (action) {
         case USER:

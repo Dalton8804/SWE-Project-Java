@@ -15,9 +15,11 @@ public class Main {
     LoginPage login = new LoginPage(appState, carList, userList);
     Home home = new Home(appState, carList, userList);
     AccountPage account = new AccountPage(appState, carList, userList);
+    CarDetail carDetail = new CarDetail(appState, carList, userList);
     Router router = new Router("login", login);
     router.addPage("home", home);
     router.addPage("account", account);
+    router.addPage("cardetail", carDetail);
     //router.logging();
     router.startRouter();
     exitApp();
