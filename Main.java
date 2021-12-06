@@ -3,6 +3,12 @@ import java.util.HashMap;
 
 
 public class Main {
+
+   public static void exitApp(){
+       ListOfCars.serialize();
+       ListOfUsers.serialize();
+       System.out.println("Goodbye!");
+    }
    public static void main(String args[]) {
       
          HashMap<String,String> appState = new HashMap<String,String>();
@@ -14,9 +20,9 @@ public class Main {
          Router router = new Router("login",login);
          router.addPage("home", home);
          router.addPage("account", account);
-         router.logging();
+         //router.logging();
          router.startRouter();
-         
+         exitApp();
          
          
          /* FUNCTIONING COMPARATOR SHIT YUHHHHHHH
@@ -40,8 +46,5 @@ public class Main {
 
       }
 
-    public static void exitApp(){
-       ListOfCars.serialize();
-       ListOfUsers.serialize();
-    }
+    
 }
