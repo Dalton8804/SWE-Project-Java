@@ -16,7 +16,7 @@ public class LoginPage extends Page{
     }
 
     public String render(){
-
+        Main.clearScreen();
         Input input = Input.getInstance();
         System.out.println("Welcome! Please start by entering your username :)");
         
@@ -24,11 +24,13 @@ public class LoginPage extends Page{
         
         // Account Exists
         if(userList.checkName(username)){
+            Main.clearScreen();
             System.out.println("Welcome back "+username+"!");
             System.out.println("Please enter your password");
             while(true){
                 String password = input.getLine();
                 if (userList.getUserByName(username).getPassword().equals(password)){
+                    Main.clearScreen();
                     System.out.println("Choose an option (enter the number of your selection):");
                     System.out.println("1: Home, 2: Account, 3: Logout, 4: Exit");
                     int choice = input.getInt();
@@ -62,6 +64,7 @@ public class LoginPage extends Page{
         }
         // Account Doesnt Exist, Account creation
         else {
+            Main.clearScreen();
             System.out.println("You must be new here.");
             System.out.println("Please enter your email.");
             String email = input.getLine();

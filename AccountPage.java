@@ -17,7 +17,7 @@ public class AccountPage extends Page{
         this.userList = userList;
     }
     public String render(){
-        clearScreen();
+        Main.clearScreen();
         System.out.println("Welcome to your Account Page "+ appState.get("username")+"!");
         System.out.println("Select an option below to continue");
         System.out.println("1: View Listings, 2: Edit Account, 3: Logout, 4: Exit App");
@@ -151,8 +151,4 @@ public class AccountPage extends Page{
         }
         nextRoute="account";
     }
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-       }
 }

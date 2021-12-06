@@ -99,7 +99,7 @@ public class Home extends Page {
             Action action = getAction(actionCode);
             switch(action){
                 case GOTOUSER:
-                    return "user";
+                    return "account";
                 case GOTONEXTPAGE:
                     nextPage();
                     break;

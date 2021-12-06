@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Main {
    public static void main(String args[]) {
-      
+         
          HashMap<String,String> appState = new HashMap<String,String>();
          ListOfCars carList = new ListOfCars();
          ListOfUsers userList = new ListOfUsers();
@@ -44,4 +44,8 @@ public class Main {
        ListOfCars.serialize();
        ListOfUsers.serialize();
     }
+    public static void clearScreen() {
+      System.out.print("\033[H\033[2J");
+      System.out.flush();
+     }
 }
