@@ -149,7 +149,6 @@ class Vehicle implements Serializable {
     return this.year;
   }
 
-<<<<<<< HEAD
   public void setYear(int year) {
     this.year = year;
   }
@@ -285,116 +284,6 @@ class Vehicle implements Serializable {
         fuelChoice1 = i + 1;
         break;
       }
-=======
-    public String getVIN() {
-        return this.VIN;
-    }
-    public void setVIN(String VIN) {
-        this.VIN = VIN;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getMake() {
-        return this.make;
-    }
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public String getModel() {
-        return this.model;
-    }
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getCountry() {
-        return this.country;
-    }
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getSize() {
-        return this.size;
-    }
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public String getColor() {
-        return this.color;
-    }
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getEngine() {
-        return this.engine;
-    }
-    public void setEngine(String engine) {
-        this.engine = engine;
-    }
-
-    public String getFuleType() {
-        return this.type;
-    }
-    public void setFuelType(String fuelType) {
-        this.fuelType = fuelType;
-    }
-
-    public String getCurrentLocation() {
-        return this.currentLocation;
-    }
-    public void setCurrentLocation(String currentLocation) {
-        this.currentLocation = currentLocation;
-    }
-
-    public int getYear() {
-        return this.year;
-    }
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getMileage() {
-        return this.mileage;
-    }
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
-
-    public int getMPG() {
-        return this.mpg;
-    }
-    public void setMPG(int mpg) {
-        this.mpg = mpg;
-    }
-
-    public double getMonthlyPayments() {
-        return this.monthlyPayments;
-    }
-    public void setMonthlyPayments(double monthlyPayments) {
-        this.monthlyPayments = monthlyPayments;
-    }
-
-    public String[] getAddedFeatures() {
-        return this.addedFeatures;
-    }
-    public void setAddedFeatures(String[] addedFeatures) {
-        this.addedFeatures = addedFeatures;
-    }
-
-    public String toString(){
-        String str = "";
-        return str;
->>>>>>> 1e1d282ee50080210ff42e07bd13a87b9775c630
     }
 
     switch (typeChoice1) { //this gets the initial cost for the calculation
@@ -473,33 +362,31 @@ class Vehicle implements Serializable {
           }
         }
 
-        if (fuelChoice1 == 2)
-            totalCost = totalCost + 2250;
-        else if (fuelChoice1 == 3)
-            totalCost = totalCost + 19000;//electric cars are more expensive to buy at first
-        if ((transmission.toLowerCase()).equals("manual"))//manuals cost about 2000 less than automatics
-            totalCost = totalCost - 2000;
+        if (fuelChoice1 == 2) totalCost = totalCost + 2250; else if (
+          fuelChoice1 == 3
+        ) totalCost = totalCost + 19000; //electric cars are more expensive to buy at first
+        if (
+          (transmission.toLowerCase()).equals("manual")
+        ) totalCost = totalCost - 2000; //manuals cost about 2000 less than automatics
 
-        if (mileage <= 3000)
-            totalCost = totalCost - (2 * mileage);//first 3000 miles average costs 2 dollars a mile
-        if (mileage >= 3000)
-            totalCost = totalCost - 6000 - (.08 * (mileage - 3000));//after that it is .08 a mile average
+        if (mileage <= 3000) totalCost = totalCost - (2 * mileage); //first 3000 miles average costs 2 dollars a mile
+        if (mileage >= 3000) totalCost =
+          totalCost - 6000 - (.08 * (mileage - 3000)); //after that it is .08 a mile average
 
-        if (age >= 1)
-            totalCost = totalCost * .75;
+        if (age >= 1) totalCost = totalCost * .75;
 
         int capCounter = 0;
-        while(--age > 0 && capCounter<10) {
-            totalCost = totalCost * .83;
-            capCounter++;
+        while (--age > 0 && capCounter < 10) {
+          totalCost = totalCost * .83;
+          capCounter++;
         }
-        double finalAnswer = Math.round(totalCost*100.0)/100.0;
+        double finalAnswer = Math.round(totalCost * 100.0) / 100.0;
         //System.out.println("You Vehicles approximate worth is: $" + finalAnswer);
-        if (finalAnswer<0){
-            finalAnswer*=-1;
+        if (finalAnswer < 0) {
+          finalAnswer *= -1;
         }
-        if (finalAnswer<1000){
-            finalAnswer+=1000;
+        if (finalAnswer < 1000) {
+          finalAnswer += 1000;
         }
         return finalAnswer;
     }

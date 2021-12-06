@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -89,16 +88,4 @@ public class LoginPage extends Page {
 
     return nextRoute;
   }
-=======
-public class LoginPage extends Page{
-    LoginPage(){}
-    
-    LoginPage(int value){
-        super(value);
-    }
-
-    public void Display(){
-        System.out.println("This is the Login Page");
-    }
->>>>>>> 1e1d282ee50080210ff42e07bd13a87b9775c630
 }
