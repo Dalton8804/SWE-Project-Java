@@ -1,3 +1,5 @@
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -91,11 +93,16 @@ public class Home extends Page {
 
     @Override
     public String render() {
+        int sortingCounter = 0;
         System.out.println("Welcome to car app Home!");
         System.out.println("0 List cars for sale, 1 go to my page, 2 exit");
         Input input = Input.getInstance();
         while(true){  
             int actionCode = input.getInt();
+            if (actionCode==0 && sortingCounter==0){
+                sortOffer();
+                sortingCounter++;
+            }
             Action action = getAction(actionCode);
             switch(action){
                 case GOTOUSER:
@@ -121,6 +128,25 @@ public class Home extends Page {
             } else {
                 System.out.println("0 Go to next page, 1 Go to previous page, 2  Go to my account page, 3 Go to a car by vin, 4 Exit");
             }
+        }
+    }
+
+    private void sortOffer() {
+        System.out.println("Before we display the cars, would you like to sort by an attribute?");
+        System.out.println("Sort by 1: Make, 2: Price, 3: Year, 4: None just let me see the cars please :)");
+        Input input = Input.getInstance();
+        int choice = input.getInt();
+        switch (choice){
+            case 1: 
+                Collections.sort(carList.getListOfCars(), Comparator.comparing((Vehicle car) -> car.getMake()));
+            break;
+            case 2: 
+                Collections.sort(carList.getListOfCars(), Comparator.comparing((Vehicle car) -> car.getPrice()));
+            break;
+            case 3: 
+                Collections.sort(carList.getListOfCars(), Comparator.comparing((Vehicle car) -> car.getYear()));
+            break;
+            case 4: break;
         }
     }
 }

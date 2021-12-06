@@ -1,8 +1,4 @@
 import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import javax.sound.sampled.SourceDataLine;
 
 class Vehicle implements Serializable{
     String VIN,type,make,model,country,size,color, transmission,engineCylinders, fuelType,currentLocation;
@@ -319,10 +315,19 @@ class Vehicle implements Serializable{
         if (age >= 1)
             totalCost = totalCost * .75;
 
-        while(--age > 0)
+        int capCounter = 0;
+        while(--age > 0 && capCounter<10) {
             totalCost = totalCost * .83;
+            capCounter++;
+        }
         double finalAnswer = Math.round(totalCost*100.0)/100.0;
         //System.out.println("You Vehicles approximate worth is: $" + finalAnswer);
+        if (finalAnswer<0){
+            finalAnswer*=-1;
+        }
+        if (finalAnswer<1000){
+            finalAnswer+=1000;
+        }
         return finalAnswer;
     }
 }
