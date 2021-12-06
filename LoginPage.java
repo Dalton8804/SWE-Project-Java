@@ -17,22 +17,21 @@ public class LoginPage extends Page{
 
     public String render(){
 
-        Scanner in = new Scanner(System.in);
+        Input input = Input.getInstance();
         System.out.println("Welcome! Please start by entering your username :)");
         
-        String username = in.nextLine();
+        String username = input.getLine();
         
         // Account Exists
         if(userList.checkName(username)){
             System.out.println("Welcome back "+username+"!");
             System.out.println("Please enter your password");
             while(true){
-                String password = in.nextLine();
+                String password = input.getLine();
                 if (userList.getUserByName(username).getPassword().equals(password)){
                     System.out.println("Choose an option (enter the number of your selection):");
                     System.out.println("1: Home, 2: Account, 3: Logout, 4: Exit");
-                    int choice = in.nextInt();
-                    in.nextLine();
+                    int choice = input.getInt();
                     switch(choice){
                         case 1: 
                             //  render Home 
@@ -65,12 +64,12 @@ public class LoginPage extends Page{
         else {
             System.out.println("You must be new here.");
             System.out.println("Please enter your email.");
-            String email = in.nextLine();
+            String email = input.getLine();
             System.out.println("Enter a new password.");
-            String password = in.nextLine();
+            String password = input.getLine();
             System.out.println("Enter your DL number for security purposes");
             System.out.println("We will not steal your identity ;) (Unless your name is Stefan Andrei)");
-            String dlNumber = in.nextLine();
+            String dlNumber = input.getLine();
             userList.addUser(new User(username,email,password,dlNumber));
             
         }
