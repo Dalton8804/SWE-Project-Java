@@ -106,7 +106,7 @@ public class AccountPage extends Page {
 
   private void renderViewListings() {
     Main.clearScreen();
-    listCars(carList.getListOfCars()); // YOURE WORKING HERE DUMB FUCK
+    listCars(carList.getListOfCars());
     System.out.println(
       "1: List New Vehicle, 2: Remove Listed Vehicle, 3: Return to Account, 4: Exit App"
     );
