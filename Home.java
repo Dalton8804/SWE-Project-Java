@@ -5,91 +5,109 @@ import java.util.Scanner;
 
 public class Home extends Page {
 
-    enum Action {
-        LIST,
-        GOTOUSER,
-        GOTONEXTPAGE,
-        GOTOPREVPAGE,
-        GOTOCAR,
-        EXIT,
-        HOME,
-        DEFAULT
+  enum Action {
+    LIST,
+    GOTOUSER,
+    GOTONEXTPAGE,
+    GOTOPREVPAGE,
+    GOTOCAR,
+    EXIT,
+    HOME,
+    DEFAULT,
+  }
+
+  private int carListCursor;
+  private ListOfUsers userList;
+  private ListOfCars carList;
+
+  Home(
+    HashMap<String, String> appState,
+    ListOfCars carList,
+    ListOfUsers userList
+  ) {
+    super(appState);
+    this.carListCursor = -4;
+    this.carList = carList;
+    this.userList = userList;
+  }
+
+  public void getCarSelection(Input input) {
+    System.out.println("Please enter an index:");
+    String index = input.getLine();
+    appState.put("selectedCar", index);
+    return;
+  }
+
+  public Action getAction(int actionCode) {
+    if (carListCursor == -4) {
+      switch (actionCode) {
+        case 0:
+          return Action.GOTONEXTPAGE;
+        case 1:
+          return Action.GOTOUSER;
+        case 2:
+          return Action.EXIT;
+        default:
+          return Action.DEFAULT;
+      }
+    } else {
+      switch (actionCode) {
+        case 0:
+          return Action.GOTONEXTPAGE;
+        case 1:
+          return Action.GOTOPREVPAGE;
+        case 2:
+          return Action.GOTOUSER;
+        case 3:
+          return Action.GOTOCAR;
+        case 4:
+          return Action.EXIT;
+        default:
+          return Action.DEFAULT;
+      }
     }
+  }
 
-    private int carListCursor;
-    private ListOfUsers userList;
-    private ListOfCars carList;
-
-    Home(HashMap<String, String> appState, ListOfCars carList, ListOfUsers userList) {
-        super(appState);
-        this.carListCursor = -4;
-        this.carList = carList;
-        this.userList = userList;
+  private void listCars() {
+    System.out.println("Results for page " + (carListCursor / 4));
+    for (
+      int i = carListCursor;
+      i < carListCursor + 4 && i < carList.size();
+      i++
+    ) {
+      Vehicle c = carList.getCar(i);
+      System.out.println(
+        (i + 1) +
+        ". Price: $" +
+        c.getPrice() +
+        ", Vin: " +
+        c.getVIN() +
+        ", Make: " +
+        c.getMake() +
+        ", Model: " +
+        c.getModel()
+      );
     }
+    return;
+  }
 
-    public void getCarSelection(Input input){
-        System.out.println("Please enter an index:");
-        String index = input.getLine();
-        appState.put("selectedCar", index);
-        return;
+  private void nextPage() {
+    if (carListCursor < carList.size() - 1) {
+      this.carListCursor = carListCursor + 4;
+      listCars();
+    } else {
+      System.out.println("No more pages...");
     }
+  }
 
-    public Action getAction(int actionCode){
-        if(carListCursor == -4){
-            switch(actionCode){
-                case 0:
-                    return Action.GOTONEXTPAGE;
-                case 1:
-                    return Action.GOTOUSER;
-                case 2:
-                    return Action.EXIT;
-                default:
-                    return Action.DEFAULT;
-            }
-        }else{
-            switch(actionCode){
-                case 0:
-                    return Action.GOTONEXTPAGE;
-                case 1:
-                    return Action.GOTOPREVPAGE;
-                case 2:
-                    return Action.GOTOUSER;
-                case 3:
-                    return Action.GOTOCAR;
-                case 4:
-                    return Action.EXIT;
-                default:
-                    return Action.DEFAULT;
-            }
-        }
+  private void prevPage() {
+    if (this.carListCursor >= 4) {
+      this.carListCursor = carListCursor - 4;
+      listCars();
+    } else {
+      System.out.println("You are on the first page already");
     }
-
-    private void listCars(){
-        System.out.println("Results for page " + (carListCursor / 4));
-        for(int i = carListCursor; i < carListCursor + 4 && i < carList.size(); i++){
-            Vehicle c = carList.getCar(i);
-            System.out.println((i + 1)+". Price: $"+c.getPrice()+", Vin: " + c.getVIN() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
-        }
-        return;
-    }
-
-    private void nextPage(){
-        if(carListCursor < carList.size() - 1){
-            this.carListCursor = carListCursor + 4;
-            listCars();
-        } else {
-            System.out.println("No more pages...");
-        }
-    }
-
-   private void prevPage(){
-        if(this.carListCursor >= 4){
-            this.carListCursor = carListCursor - 4;
-            listCars();
-        } else {
-            System.out.println("You are on the first page already");
-        }
-   }
+  }
 
     @Override
     public String render() {

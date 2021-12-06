@@ -1,7 +1,5 @@
 import java.util.HashMap;
 
-
-
 public class Main {
 
    public static void exitApp(){
@@ -31,11 +29,10 @@ public class Main {
          carList.serialize();
          System.out.println(carList.size());*/
 
+  }
 
-      }
-    public static void clearScreen() {
-      System.out.print("\033[H\033[2J");
-      System.out.flush();
-     }
-    
+  public static void clearScreen() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+  }
 }
