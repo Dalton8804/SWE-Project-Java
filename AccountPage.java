@@ -86,6 +86,7 @@ public class AccountPage extends Page{
             nextRoute ="login";
     }
     private void renderViewListings() {
+        // USE CHANDLERS CODE TO DISPLAY CARS FILTERED BY THE USER IN APPSTATE
         System.out.println("Displayed Listings");
         System.out.println("1: List New Vehicle, 2: Remove Listed Vehicle, 3: Return to Account, 4: Exit App");
         int choice = input.nextInt();
@@ -136,7 +137,7 @@ public class AccountPage extends Page{
                         size, color, transmission, engineCylinders,
                         mpg, fuelType, currentLocation, monthlyPayments, price);
 
-
+                newCar.setUserTag(appState.get("username"));
                 carList.addCar(newCar);
                 
             break;

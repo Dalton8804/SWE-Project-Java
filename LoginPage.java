@@ -52,8 +52,7 @@ public class LoginPage extends Page{
                             System.out.println("Thanks for visiting!");
                             break;
                         case 4: 
-                            Main.exitApp(); 
-                        break;
+                            return "exit";
                     }
                     break;
                 }

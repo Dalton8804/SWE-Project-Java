@@ -26,13 +26,20 @@ public class Router {
         if(dev){
             System.out.println("Switching to " + currentRoute);
         }
+        if(currentRoute == "exit"){
+            return null;
+        }
         return allRoutes.get(currentRoute);
     }
 
     public void startRouter(){
         while(running){
             Page currentPage = loadPage();
-            currentRoute = currentPage.render();
+            if(currentPage == null){
+                running = false;
+            } else {
+                currentRoute = currentPage.render();
+            }
             if(dev){
                 System.out.println("The next page " + currentRoute);
             }

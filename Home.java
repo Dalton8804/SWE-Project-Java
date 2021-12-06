@@ -20,7 +20,7 @@ public class Home extends Page {
 
     Home(HashMap<String, String> appState, ListOfCars carList, ListOfUsers userList) {
         super(appState);
-        this.carListCursor = 0;
+        this.carListCursor = -4;
         this.carList = carList;
         this.userList = userList;
     }
@@ -33,7 +33,7 @@ public class Home extends Page {
     }
 
     public Action getAction(int actionCode){
-        if(carListCursor == 0){
+        if(carListCursor == -4){
             switch(actionCode){
                 case 0:
                     return Action.GOTONEXTPAGE;
@@ -63,17 +63,17 @@ public class Home extends Page {
     }
 
     private void listCars(){
-        System.out.println("Results for page " + (carListCursor));
-        for(int i = carListCursor * 4; i < carListCursor + 4 && i < carList.size(); i++){
+        System.out.println("Results for page " + (carListCursor / 4));
+        for(int i = carListCursor; i < carListCursor + 4 && i < carList.size(); i++){
             Vehicle c = carList.getCar(i);
-            System.out.println(i + ". Vin: " + c.getVIN() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
+            System.out.println((i + 1) + ". Vin: " + c.getVIN() + ", Make: " + c.getMake() + ", Model: " + c.getModel());
         }
-
+        return;
     }
 
     private void nextPage(){
         if(carListCursor < carList.size() - 1){
-            carListCursor += 1;
+            this.carListCursor = carListCursor + 4;
             listCars();
         } else {
             System.out.println("No more pages...");
@@ -81,8 +81,8 @@ public class Home extends Page {
     }
 
    private void prevPage(){
-        if(carListCursor > 0){
-            carListCursor -= 1;
+        if(this.carListCursor >= 4){
+            this.carListCursor = carListCursor - 4;
             listCars();
         } else {
             System.out.println("You are on the first page already");
@@ -116,10 +116,10 @@ public class Home extends Page {
                 case DEFAULT:
                     break;
             }
-            if(carListCursor == 0){
-                System.out.println("0 List all cars for sale, 1 go to my page, 3 exit");
+            if(carListCursor == -4){
+                System.out.println("0 List all cars for sale, 1 Go to my page, 3 Exit");
             } else {
-                System.out.println("0 go to next page, 1 go to previous page, 2  go to my page, 3  go to a car by vin, 4 exit");
+                System.out.println("0 Go to next page, 1 Go to previous page, 2  Go to my page, 3 Go to a car by vin, 4 Exit");
             }
         }
     }

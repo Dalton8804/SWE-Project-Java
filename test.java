@@ -4,33 +4,33 @@ import java.util.ArrayList;
 public class test {
     static ListOfCars bigAssVehicleList = new ListOfCars();
     
-    static ArrayList<Vehicle> carArrayList = bigAssVehicleList.getListOfCars();
     public static void main(String args[]){
         FilterTest ft = new FilterTest();
-        
+        bigAssVehicleList = Sort.makeCars(1000, bigAssVehicleList);
         System.out.println(filterList(ft.getFilterObj()));
-        System.out.println("Make of first car: "+carArrayList.get(0).getMake());
+        ListOfCars.serialize();
+        
 
         
     }
     public static ArrayList<Vehicle> filterList(Filters filterObject) {
 
         ArrayList<Vehicle> filtered = new ArrayList<Vehicle>();
-
+        ArrayList<Vehicle> carArrayList = bigAssVehicleList.getListOfCars();
         for (Vehicle v:carArrayList) {
             boolean meetsCriteria = true;
             if (filterObject.make != null) { //Check if they are filtering on this prop
-                if (filterObject.make != v.make) {
+                if (!filterObject.make.equalsIgnoreCase(v.make)) {
                     meetsCriteria = false;
                 } 
             }
             if (filterObject.model != null) { //Check if they are filtering on this prop
-                if (filterObject.model != v.model) {
+                if (!filterObject.model.equalsIgnoreCase(v.model)) {
                     meetsCriteria = false;
                 } 
             }
             if (filterObject.country != null) { //Check if they are filtering on this prop
-                if (filterObject.country != v.country) {
+                if (!filterObject.country.equalsIgnoreCase(v.country)) {
                     meetsCriteria = false;
                 } 
             }
@@ -45,22 +45,22 @@ public class test {
                 } 
             }
             if (filterObject.size != null) { //Check if they are filtering on this prop
-                if (filterObject.size != v.size) {
+                if (!filterObject.size.equalsIgnoreCase(v.size)) {
                     meetsCriteria = false;
                 } 
             }
             if (filterObject.color != null) { //Check if they are filtering on this prop
-                if (filterObject.color != v.color) {
+                if (!filterObject.color.equalsIgnoreCase(v.color)) {
                     meetsCriteria = false;
                 } 
             }
             if (filterObject.transmission != null) { //Check if they are filtering on this prop
-                if (filterObject.transmission != v.transmission) {
+                if (!filterObject.transmission.equalsIgnoreCase(v.transmission)) {
                     meetsCriteria = false;
                 } 
             }
             if (filterObject.numberCylinders != null) { //Check if they are filtering on this prop
-                if (filterObject.numberCylinders != v.engineCylinders) {
+                if (!filterObject.numberCylinders.equalsIgnoreCase(v.engineCylinders)) {
                     meetsCriteria = false;
                 } 
             }
@@ -70,12 +70,12 @@ public class test {
                 } 
             }
             if (filterObject.fuelType != null) { //Check if they are filtering on this prop
-                if (filterObject.fuelType != v.fuelType) {
+                if (!filterObject.fuelType.equalsIgnoreCase(v.fuelType)) {
                     meetsCriteria = false;
                 } 
             }
             if (filterObject.currentLocation != null) { //Check if they are filtering on this prop
-                if (filterObject.currentLocation != v.currentLocation) {
+                if (!filterObject.currentLocation.equalsIgnoreCase(v.currentLocation)) {
                     meetsCriteria = false;
                 } 
             }
@@ -86,6 +86,11 @@ public class test {
             }
             if (filterObject.maxPrice != 99999999) { //Check if they are filtering on this prop
                 if (filterObject.maxPrice < v.price || v.price < filterObject.minPrice) {
+                    meetsCriteria = false;
+                } 
+            }
+            if (filterObject.userTag != null) { //Check if they are filtering on this prop
+                if (!filterObject.userTag.equalsIgnoreCase(v.userTag)) {
                     meetsCriteria = false;
                 } 
             }

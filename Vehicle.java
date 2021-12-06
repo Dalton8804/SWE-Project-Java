@@ -7,6 +7,7 @@ class Vehicle implements Serializable{
     int year,mileage,mpg, price;
     double monthlyPayments;
     String[] addedFeatures;
+    public String userTag;
 
     Vehicle(String VIN, String type, String make, String model,
             String country, int year, int mileage, String[] addedFeatures,
@@ -178,5 +179,8 @@ class Vehicle implements Serializable{
                 temp = temp + this.addedFeatures[i] + ", ";
         }
         return temp;
+    }
+    public void setUserTag(String userName){
+        this.userTag = userName;
     }
 }
