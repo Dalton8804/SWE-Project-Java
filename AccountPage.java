@@ -171,7 +171,7 @@ public class AccountPage extends Page{
         System.out.println("List of Cars");
         for(Vehicle v: arr){
             if (v.userTag.equals(appState.get("username"))) {
-                System.out.println((i + 1) + ". Vin: " + v.getVIN() + ", Make: " + v.getMake() + ", Model: " + v.getModel());
+                System.out.println((i + 1) + ". Price: "+v.getPrice()+", Vin: " + v.getVIN() + ", Make: " + v.getMake() + ", Model: " + v.getModel());
                 i++;
             }
         }

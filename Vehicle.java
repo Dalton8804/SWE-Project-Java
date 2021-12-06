@@ -2,9 +2,12 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import javax.sound.sampled.SourceDataLine;
+
 class Vehicle implements Serializable{
     String VIN,type,make,model,country,size,color, transmission,engineCylinders, fuelType,currentLocation;
-    int year,mileage,mpg, price;
+    int year,mileage,mpg;
+    double price;
     double monthlyPayments;
     String[] addedFeatures;
     public String userTag;
@@ -29,14 +32,13 @@ class Vehicle implements Serializable{
         this.fuelType = fuelType;
         this.currentLocation = currentLocation;
         this.monthlyPayments = monthlyPayments;
-        if (price>0)
-            this.price = price;
-        this.price = calcPrice();
+        if (price==0) {
+            this.price = calcPrice(type, size, transmission, fuelType, mileage, 2021-year); }
+        else {
+            this.price = price; }
+        
     }
 
-    private int calcPrice() {
-        return (int)Math.floor(Math.random()*(47000-25000)+25000);
-    }
 
     // Simple constructor for testing. Delete this when no longer needed
     Vehicle(String VIN) { this.VIN = VIN; }
@@ -142,7 +144,7 @@ class Vehicle implements Serializable{
     public double getMonthlyPayments() {
         return this.monthlyPayments;
     }
-    public int getPrice(){
+    public double getPrice(){
         return this.price;
     }
     public void setMonthlyPayments(double monthlyPayments) {
@@ -182,5 +184,145 @@ class Vehicle implements Serializable{
     }
     public void setUserTag(String userName){
         this.userTag = userName;
+    }
+
+    private static double calcPrice(String typeChoice, String sizeChoice, String transmission, String fuel, int mileage, int age) {
+        double totalCost = 0;
+        int typeChoice1 = 1;
+        int sizeChoice1 = 1;
+        int fuelChoice1 = 1;
+        String a[] = {"coupe", "crossover", "truck", "sedan", "sports car", "hatchback"};
+        for (int i = 0; i < a.length; i++) {
+            if (a[i].equals(typeChoice.toLowerCase())) {
+                typeChoice1 = i+1;
+                break;
+            }
+        }
+        String b[] = {"compact", "mid-sized", "full-sized"};
+        for (int i = 0; i < b.length; i++) {
+            if (b[i].equals(sizeChoice.toLowerCase())) {
+                sizeChoice1 = i+1;
+                break;
+            }
+        }
+        String c[] = {"gasoline", "diesel", "electric"};
+        for (int i = 0; i < c.length; i++) {
+            if (c[i].equals(fuel.toLowerCase())) {
+                fuelChoice1 = i+1;
+                break;
+            }
+        }
+
+        switch (typeChoice1) {//this gets the initial cost for the calculation
+            case 1: {
+                switch (sizeChoice1) {
+                    case 1:
+                        totalCost = 20000;
+                        break;
+                    case 2:
+                        totalCost = 28000;
+                        break;
+                    case 3:
+                        totalCost = 34000;
+                        break;
+                }
+                break;
+            }//coupes cost around 34 full-sized, 28 mid-sized, 20000 compact
+            case 2: {
+                switch (sizeChoice1) {
+                    case 1:
+                        totalCost = 20000;
+                        break;
+                    case 2:
+                        totalCost = 25000;
+                        break;
+                    case 3:
+                        totalCost = 40000;
+                        break;
+                }
+            }
+            break;//crossovers cost around 40 full-sized 25 midsized, 20 compact
+            case 3: {
+                switch (sizeChoice1) {
+                    case 1:
+                        totalCost = 22000;
+                        break;
+                    case 2:
+                        totalCost = 30000;
+                        break;
+                    case 3:
+                        totalCost = 38000;
+                        break;
+                }
+            }
+            break;//trucks cost around 38 full-sized, 30 mid-sized, 22 compact
+            case 4: {
+                switch (sizeChoice1) {
+                    case 1:
+                        totalCost = 23000;
+                        break;
+                    case 2:
+                        totalCost = 30000;
+                        break;
+                    case 3:
+                        totalCost = 40000;
+                        break;
+                }
+            }
+            break;//sedans cost around 40 full-sized, 30 mid-sized, and 23 compact
+            case 5: {
+                switch (sizeChoice1) {
+                    case 1:
+                        totalCost = 36000;
+                        break;
+                    case 2:
+                        totalCost = 43000;
+                        break;
+                    case 3:
+                        totalCost = 50000;
+                        break;
+                }
+            }
+            break;//sports cars cost around 36 compact, 43 mid-sized, 50 full-sized
+            case 6: {
+                switch (sizeChoice1) {
+                    case 1:
+                        totalCost = 15000;
+                        break;
+                    case 2:
+                        totalCost = 20000;
+                        break;
+                    case 3:
+                        totalCost = 24000;
+                        break;
+                }
+
+            }
+            break;//hatchbacks cost around 24, 20, 15
+            default:
+                System.out.println("you messed it up!");
+                break;
+        }
+
+        if (fuelChoice1 == 2)
+            totalCost = totalCost + 2250;
+        else if (fuelChoice1 == 3)
+            totalCost = totalCost + 19000;//electric cars are more expensive to buy at first
+        if ((transmission.toLowerCase()).equals("manual"))//manuals cost about 2000 less than automatics
+            totalCost = totalCost - 2000;
+
+        if (mileage <= 3000)
+            totalCost = totalCost - (2 * mileage);//first 3000 miles average costs 2 dollars a mile
+        if (mileage >= 3000)
+            totalCost = totalCost - 6000 - (.08 * (mileage - 3000));//after that it is .08 a mile average
+
+        if (age >= 1)
+            totalCost = totalCost * .75;
+
+        while(--age > 0)
+            totalCost = totalCost * .83;
+        double finalAnswer = Math.round(totalCost*100.0)/100.0;
+        //System.out.println("You Vehicles approximate worth is: $" + finalAnswer);
+        return finalAnswer;
     }
 }
