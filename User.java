@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 import java.io.Serializable;
 import java.util.Random;
 
 public class User implements Serializable{
+=======
+public class User{
+>>>>>>> 1e1d282ee50080210ff42e07bd13a87b9775c630
     private String username;
     private String email;
     private String password;
